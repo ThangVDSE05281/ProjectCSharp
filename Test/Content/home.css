@@ -1,0 +1,153 @@
+﻿*{
+}
+
+.productControl a {
+    font-weight: bold;
+}
+
+.productControl i {
+    color: red;
+}
+
+.card-body {
+    padding: 0;
+    margin: 10px 0;
+}
+
+p.productPrice {
+    color: #587ca9;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+p.productTitle {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+i.fas.fa-th {
+    margin-right: 15px;
+}
+
+.listProductHeader {
+    background: #D84B6B;
+    color: white;
+    padding: 0 20px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.listProduct {
+    border: 1px solid #D84B6B;
+    width: 100%;
+}
+
+.listProduct .row {
+    width: 100%;
+    margin: auto;
+    padding: 10px 5px;
+}
+
+i.fas.fa-laptop {
+    margin-right: 15px;
+}
+
+li.dropdownItem {
+    border: 1px solid #eaeaea;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+}
+
+ul.dropdown {
+    list-style: none;
+    padding: 0;
+}
+
+li.titleCategory {
+    font-size: 25px;
+    color: white;
+    background: #0275D8;
+    height: 50px;
+    padding-left: 10px;
+}
+
+li.titleCategory a {
+    color: white;
+}
+
+i.fab.fa-google-plus-g {
+    font-size: 30px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+i.fab.fa-facebook-f {
+    font-size: 30px;
+    color: white;
+}
+
+i.fab.fa-twitter {
+    font-size: 30px;
+    color: white;
+}
+
+.col-md-2.mx-auto.footerLogoContain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer.page-footer.font-small.indigo.bg-dark {
+    color: white;
+}
+
+img.footerLogo {
+    width: 100px;
+}
+
+nav.navbar .collapse {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav.navbar .collapse ul li {
+    display: flex;
+    align-items: center;
+}
+
+nav.navbar .collapse ul {
+    margin: 0!important;
+}
+
+.searchAndCart {
+    float: right;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.searchAndCart button {
+    margin-right: 5px;
+}
+
+.searchAndCart input {
+    display: inline-block;
+    width: 250px;
+    height: inherit;
+}
+
+.cartButton .cartButtonasp {
+    width: 70px;
+    background: transparent;
+    border: none;
+    color: #69b588;
+}
+
+.navbar ul.nav.nav-tabs li {display: flex;align-items: center;}
+
+
+img.logo {
+    width: 69px;
+}
