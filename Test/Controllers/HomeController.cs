@@ -31,7 +31,7 @@ namespace Test.Controllers
                                     +"<hr style = \"margin:2px 0\" />"
                                     +"<div class=\"productDetailLink\">"
                                         +"<i class=\"fas fa-info-circle\"></i>"
-                                        + "<a href = \"#\" > More details</a>"
+                                        + "<a href = \"/Home/ViewProduct/"+ phones[i].productID+"\" > More details</a>"
                                     +"</div>"
                                 + "</div>"
                             + "</div>"
@@ -74,20 +74,12 @@ namespace Test.Controllers
             ViewBag.id = Session["CartProductId"];
             return View();
         }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
         
+        public ActionResult ViewProduct(int id)
+        {
+            Product product = db.Products.Single(p => p.productID == id);
+            ViewData["Product"] = product;
+            return View();
+        }
     }
 }

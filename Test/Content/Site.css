@@ -22,3 +22,111 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*View product page css*/
+#view-product-body {
+    min-height: 550px;
+}
+.price-text-color {
+    color: #219FD1;
+}
+
+.price-sale .card .card-title {
+    background: #DE181D;
+    color: white;
+    padding: 1.25rem;
+}
+.price-sale .card .card-title span {
+    color: #F8E31C;
+}
+
+.price-sale .card .card-block .card-text span:before {
+    content: '';
+    background: url(../../Images/bullet.png);
+    width: 14px;
+    height: 14px;
+    background-size: 14px 14px;
+}
+
+.price-sale .card .card-block .buy-now {
+    display: block;
+    overflow: hidden;
+    padding: 9px 0;
+    background-image: linear-gradient(-180deg,#e52025 2%,#d81116 96%);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: normal;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+}
+.price-sale .card .card-block .buy-now span {
+    display: block;
+    font-size: 12px;
+    color: #fff;
+    text-transform: none;
+}
+
+.price-sale .card .card-block .buy-ins span {
+    display: block;
+    font-size: 12px;
+    color: #fff;
+    text-transform: none;
+}
+
+.price-sale .card .card-block .buy-ins {
+    line-height: normal;
+    display: block;
+    padding: 9px 0;
+    text-align: center;
+    margin: 10px 0 0;
+    background-image: linear-gradient(-180deg,#288ad6 0%,#0e74c3 100%);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.view-content ul.policy {
+    border: 1px dashed #f6a623;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+
+.checkexist .dropdown {
+    margin-top:10px;
+    width: 100%;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    color: #636c72;
+    content: "/";
+}
+.container-card-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: #0090e3;
+  color: #fff;
+}
+
+.container-card-button .icon-card {
+  font-size: 22px;
+  padding: 5px 8px;
+}
+.btn-default {
+  flex: 1;
+  transition: 0.4s;
+  color: #fff;
+  background-color: #303030;
+  text-transform: uppercase;
+}
