@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -44,11 +45,11 @@ namespace Test.Controllers
                             + "<img class=\"card-img-top\" src=\"../../../Content/Images/" + laptops[i].image + "\" alt=\"Card image cap\" />"
                             + "<div class=\"card-body\">"
                                 + "<p class=\"productTitle\">" + laptops[i].name + "</p>"
-                                + "<p class=\"productPrice\">$" + phones[i].price + "/p>"
+                                + "<p class=\"productPrice\">$" + phones[i].price + "</p>"
                                 + "<div class=\"productControl\">"
                                     + "<div class=\"addProductCart\">"
                                         + "<i class=\"fas fa-shopping-cart\"></i>"
-                                        + "<a href = \"#\" > Add to cart</a>"
+                                        + "<a href = \"/Home/AddCart/" + laptops[i].productID + "\" > Add to cart</a>"
                                     + "</div>"
                                     + "<hr style = \"margin:2px 0\" />"
                                     + "<div class=\"productDetailLink\">"
@@ -65,13 +66,29 @@ namespace Test.Controllers
         }
         public ActionResult AddCart(int id)
         {
-            Session["CartProductId"] = id;
-            ViewBag.id = Session["CartProductId"];
+            if (Session["CartProductId"] == null) {
+                ArrayList productsCartNew = new ArrayList();
+                productsCartNew.Add(id);
+                Session["CartProductId"] = productsCartNew;
+            }
+            else
+            {
+                ArrayList productsCartExisted = Session["CartProductId"] as ArrayList;
+                productsCartExisted.Add(id);
+            }
+
+            ViewBag.id = id;
             return View();
         }
         public ActionResult Cart()
         {
-            ViewBag.id = Session["CartProductId"];
+            ArrayList productsCartExisted = Session["CartProductId"] as ArrayList;
+            int total = 0;
+            foreach (int num in productsCartExisted)
+            {
+                total ++; //-->Runtime Error
+            }
+            ViewBag.id = total;
             return View();
         }
 
