@@ -20,6 +20,7 @@ namespace Test.Controllers
 
             ViewBag.phonesList = phonesList;
             ViewBag.lapTopsList = lapTopsList;
+
             return View();
         }
         public ActionResult AddCart(int id, int quantity)
