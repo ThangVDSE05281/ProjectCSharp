@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,67 +13,62 @@ namespace Test.Controllers
         Entities db = new Entities();
         public ActionResult Index()
         {
-            string resultPhones = "";
             string resultLaptops = "";
-            var phones = (from p in db.Products where p.productType.Equals("SmartPhone") orderby p.productID  select p).Take(8).ToList();
-            var laptops= (from p in db.Products where p.productType.Equals("Laptop") orderby p.productID select p).Take(8).ToList();
-            for (int i = 0; i < phones.Count; i++)
-            {
-                resultPhones += "<div class=\"oneProduct card col-sm-3\">"
-                            +"<img class=\"card-img-top\" src=\"../../../Images/"+ phones[i].image+ "\" alt=\"Card image cap\" />"
-                            +"<div class=\"card-body\">"
-                                +"<p class=\"productTitle\">"+ phones[i].name+ "</p>"
-                                + "<p class=\"productPrice\">$" + phones[i].price + "</p>"
-                                + "<div class=\"productControl\">"
-                                    +"<div class=\"addProductCart\">"
-                                        +"<i class=\"fas fa-shopping-cart\"></i>"
-                                        + "<a href = \"/Home/AddCart/"+ phones[i].productID+ "\" > Add to cart</a>"
-                                     + "</div>"
-                                    +"<hr style = \"margin:2px 0\" />"
-                                    +"<div class=\"productDetailLink\">"
-                                        +"<i class=\"fas fa-info-circle\"></i>"
-                                        + "<a href = \"/Home/ViewProduct/"+ phones[i].productID+"\" > More details</a>"
-                                    +"</div>"
-                                + "</div>"
-                            + "</div>"
-                        + "</div>";
-            }
+            List<Product> phonesList = (from p in db.Products where p.productType.Equals("SmartPhone") orderby p.productID  select p).Take(8).ToList();
+            List<Product> lapTopsList= (from p in db.Products where p.productType.Equals("Laptop") orderby p.productID select p).Take(8).ToList();
 
-            for (int i = 0; i < laptops.Count; i++)
-            {
-                resultLaptops += "<div class=\"oneProduct card col-sm-3\">"
-                            + "<img class=\"card-img-top\" src=\"../../../Images/" + laptops[i].image + "\" alt=\"Card image cap\" />"
-                            + "<div class=\"card-body\">"
-                                + "<p class=\"productTitle\">" + laptops[i].name + "</p>"
-                                + "<p class=\"productPrice\">$" + phones[i].price + "/p>"
-                                + "<div class=\"productControl\">"
-                                    + "<div class=\"addProductCart\">"
-                                        + "<i class=\"fas fa-shopping-cart\"></i>"
-                                        + "<a href = \"#\" > Add to cart</a>"
-                                    + "</div>"
-                                    + "<hr style = \"margin:2px 0\" />"
-                                    + "<div class=\"productDetailLink\">"
-                                        + "<i class=\"fas fa-info-circle\"></i>"
-                                        + "<a href = \"#\" > More details</a>"
-                                    + "</div>"
-                                + "</div>"
-                            + "</div>"
-                        + "</div>";
-            }
-            ViewBag.phones = resultPhones;
-            ViewBag.laptops = resultLaptops;
+
+            ViewBag.phonesList = phonesList;
+            ViewBag.lapTopsList = lapTopsList;
+
             return View();
         }
-        public ActionResult AddCart(int id)
+        public ActionResult AddCart(int id, int quantity)
         {
-            Session["CartProductId"] = id;
-            ViewBag.id = Session["CartProductId"];
-            return View();
+            try {
+                List<CartItem> cartItems;
+                if (Session["CartItems"] == null)
+                {
+                    cartItems = new List<CartItem>();
+                    cartItems.Add(new CartItem(id, quantity));
+                    Session["CartItems"] = cartItems;
+                    Session["CartItemsSize"] = cartItems.Count;
+                    return Json(cartItems);
+                }
+                else
+                {
+                    cartItems = Session["CartItems"] as List<CartItem>;
+                    for (int i = 0; i < cartItems.Count; i++)
+                    {
+                        if (cartItems[i].productID == id)
+                        {
+                            cartItems[i].quantity += quantity;
+                            return Json(cartItems);
+                        }
+                    }
+
+                    cartItems.Add(new CartItem(id, 1));
+                    Session["CartItemsSize"] = cartItems.Count;
+                    return Json(cartItems);
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return Json("error");
+            }
+            
+
+            //ViewBag.id = id;
+            //return View();
+            
         }
         public ActionResult Cart()
         {
-            ViewBag.id = Session["CartProductId"];
+            List<CartItem> cartItems = Session["CartItems"] as List<CartItem>;
+            ViewBag.cartItems = cartItems;
             return View();
+            
         }
         
         public ActionResult ViewProduct(int id)

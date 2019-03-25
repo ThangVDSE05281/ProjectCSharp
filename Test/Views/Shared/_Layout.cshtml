@@ -13,7 +13,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="logo-space" href="">
+                <a class="navbar-brand" href="/Home">
                     <img class="logo" src="../../../Content/Images/Qt_logo.png" />
                 </a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -29,7 +29,19 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <div class="cart">
+                    @if (Session["CartItemsSize"] != null)
+                    {
+                        <span id="cartItemsSize">@Session["CartItemsSize"]</span>
+                    }
+                    @if (Session["CartItemsSize"] == null)
+                    {
+                        <span id="cartItemsSize">0</span>
+                    }
+                    <a href="/Home/Cart"><i class="fas fa-shopping-cart"></i></a>
+                </div>
+                
+                @*@Html.Partial("_LoginPartial")*@
             </div>
         </div>
     </div>
@@ -86,5 +98,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="../../Scripts/index.js"></script>
 </body>
 </html>

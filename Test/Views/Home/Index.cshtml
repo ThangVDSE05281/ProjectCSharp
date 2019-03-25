@@ -63,13 +63,59 @@
                 <div class="listProduct listLaptop">
                     <div class="listProductHeader"><i class="fas fa-th"></i>Laptop</div>
                     <div class="row">
-                        @Html.Raw(ViewBag.phones)
+                        @if (ViewBag.phonesList != null)
+                        {
+                            foreach (var x in ViewBag.phonesList)
+                            {
+                                <div class="oneProduct card col-sm-3">
+                                    <img class="card-img-top" src="../../../Content/Images/@x.image " alt="Card image cap"/>
+                                    <div class="card-body">
+                                        <p class="productTitle">@x.name</p>
+                                        <p class="productPrice">$@x.price</p>
+                                        <div class="productControl">
+                                            <div class="addProductCart">
+                                                <i class="fas fa-shopping-cart"></i>
+                                                <a onclick="addToCart(@x.productID)" style="cursor:pointer"> Add to cart</a>
+                                            </div>
+                                            <hr style="margin:2px 0" >
+                                            <div class="productDetailLink">
+                                                <i class="fas fa-info-circle"></i>
+                                                <a href="#"> More details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
                     </div>
                 </div>
                 <div class="listProduct listMobile">
                     <div class="listProductHeader"><i class="fas fa-th"></i>Điện thoại</div>
                     <div class="row">
-                        @Html.Raw(ViewBag.laptops)
+                        @if (ViewBag.lapTopsList != null)
+                        {
+                            foreach (var x in ViewBag.lapTopsList)
+                            {
+                                <div class="oneProduct card col-sm-3">
+                                    <img class="card-img-top" src="../../../Content/Images/@x.image " alt="Card image cap" />
+                                    <div class="card-body">
+                                        <p class="productTitle">@x.name</p>
+                                        <p class="productPrice">$@x.price</p>
+                                        <div class="productControl">
+                                            <div class="addProductCart">
+                                                <i class="fas fa-shopping-cart"></i>
+                                                <a onclick="addToCart(@x.productID)" style="cursor:pointer"> Add to cart</a>
+                                            </div>
+                                            <hr style="margin:2px 0">
+                                            <div class="productDetailLink">
+                                                <i class="fas fa-info-circle"></i>
+                                                <a href="#"> More details</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
                     </div>
                 </div>
             </div>
