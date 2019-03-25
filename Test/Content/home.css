@@ -1,6 +1,20 @@
 ﻿*{
 }
 
+.oneProduct.card.col-sm-3 {
+    border: 1px solid white;
+    margin-bottom: 5px;
+    transition: .5s;
+    background: #e8f1fd;
+}
+
+.oneProduct.card.col-sm-3:hover {
+    transform: scale(1.01);
+    transition: .5s;
+    box-shadow: 0px 0px 20px -5px black;
+    z-index:999;
+}
+
 .productControl a {
     font-weight: bold;
 }
@@ -149,5 +163,12 @@ nav.navbar .collapse ul {
 
 
 img.logo {
-    width: 69px;
+    width: 50px;
+}
+
+.body-content{
+    margin-top:50px;
+}
+.oneProduct.card.col-sm-3 img{
+    width:100%;
 }

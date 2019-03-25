@@ -18,6 +18,11 @@ namespace Test
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "AddCart",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "AddCart", id = UrlParameter.Optional }
+            );
         }
     }
 }
