@@ -9,7 +9,7 @@ namespace Test
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-3.1.1.slim.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -27,6 +27,7 @@ namespace Test
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/home.css"));
+            
         }
     }
 }

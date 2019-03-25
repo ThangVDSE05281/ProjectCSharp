@@ -17,6 +17,7 @@ namespace Test.Controllers
             List<Product> phonesList = (from p in db.Products where p.productType.Equals("SmartPhone") orderby p.productID  select p).Take(8).ToList();
             List<Product> lapTopsList= (from p in db.Products where p.productType.Equals("Laptop") orderby p.productID select p).Take(8).ToList();
 
+
             ViewBag.phonesList = phonesList;
             ViewBag.lapTopsList = lapTopsList;
             return View();
@@ -68,20 +69,12 @@ namespace Test.Controllers
             return View();
             
         }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
         
+        public ActionResult ViewProduct(int id)
+        {
+            Product product = db.Products.Single(p => p.productID == id);
+            ViewData["Product"] = product;
+            return View();
+        }
     }
 }

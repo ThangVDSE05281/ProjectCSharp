@@ -23,6 +23,11 @@ namespace Test
                 url: "{controller}/{action}/{id}/{quantity}",
                 defaults: new { controller = "Home", action = "AddCart", id = UrlParameter.Optional,quantity= UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "ProductDetails", 
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "ViewProduct", id=UrlParameter.Optional }
+           );
         }
     }
 }

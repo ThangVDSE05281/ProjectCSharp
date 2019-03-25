@@ -1,0 +1,160 @@
+﻿@using Test.Models
+@{
+    ViewBag.Title = "Product Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var product = (Product)ViewData["Product"];
+}
+<div class="container" id="view-product-body">
+    <div class="view-header">
+        <nav class="breadcrumb">
+            @Html.ActionLink("Home","Index","Home",new {@class = "breadcrumb-item" })
+            <a class="breadcrumb-item" href="#">@product.productType</a>
+            <span class="breadcrumb-item active">@product.name</span>
+        </nav>
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <h3>@product.productType @product.name @product.RAM</h3>
+            </li>
+            <li class="list-inline-item">
+                <div class="row">
+                    <div class="rating hidden-sm col-md-12">
+                        <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                        </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                        </i><i class="fa fa-star"></i>
+                        <span style="color:orange;">75 Đánh giá</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <hr>
+    <div class="view-content">
+        <div class="row">
+            <div class="col-md-7">
+                <img src="../../Images/@product.image" alt="Img product">
+            </div>
+            <div class="col-md-5">
+                <div class="price-sale">
+                    <div class="card">
+                        <h4 class="card-title">
+                            Buy Online with lowest price
+                            <span>@product.price $</span>
+                        </h4>
+                        <div class="card-block">
+                            <p class="card-text">
+                                @product.description
+                                <br />
+                                @product.description
+                                @product.description
+                                <br />
+                                @product.description
+                            </p>
+                            <div>
+                                <a href="#" class="buy-ins">
+                                    <b>Buy now with price @product.price $</b>
+                                    <br>
+                                    <span>Xem hàng, không thích không mua</span>
+                                </a>
+                            </div>
+                            <br />
+                            <div>
+                                <div class="text-center container-card-button">
+                                    <a href="" class="btn btn-default">Add to card</a>
+                                    <i class="fa fa-shopping-cart icon-card"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Đặc điểm nổi bật</h4>
+                <div class="owl-detail">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                            <li data-target="#myCarousel" data-slide-to="3"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <img src="../../Images/vi-vn-1-thietke.jpg"/>
+                            </div>
+
+                            <div class="item">
+                                <img src="../../Images/iphone-6s-32gb--4.jpg"/>
+                            </div>
+
+                            <div class="item">
+                                <img src="../../Images/iphone-6s-32gb--3.jpg"/>
+                            </div>
+
+                            <div class="item">
+                                <img src="../../Images/iphone-6s-32gb--5.jpg"/>
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4>Thông số kỹ thuật</h4>
+                <table class="table table-responsive">
+                    <tr>
+                        <td>Màn hình:</td>
+                        <td>@product.screen</td>
+                    </tr>
+                    <tr>
+                        <td>Hệ điều hành</td>
+                        <td>@product.OS</td>
+                    </tr>
+                    <tr>
+                        <td>Camara sau:</td>
+                        <td>@product.camera</td>
+                    </tr>
+                    <tr>
+                        <td>Camara trước:</td>
+                        <td>@product.camera</td>
+                    </tr>
+                    <tr>
+                        <td>CPU:</td>
+                        <td>@product.CPU</td>
+                    </tr>
+                    <tr>
+                        <td>RAM:</td>
+                        <td>@product.RAM</td>
+                    </tr>
+                    <tr>
+                        <td>Bộ nhớ trong:</td>
+                        <td>32 GB</td>
+                    </tr>
+                    <tr>
+                        <td>Thẻ sim:</td>
+                        <td>@product.SIM</td>
+                    </tr>
+                    <tr>
+                        <td>Dung lượng</td>
+                        <td>@product.PIN</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

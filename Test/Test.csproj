@@ -321,6 +321,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\AddCart.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
+    <Content Include="Views\Home\ViewProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
