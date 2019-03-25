@@ -13,10 +13,8 @@ namespace Test.Controllers
         Entities db = new Entities();
         public ActionResult Index()
         {
-            string resultLaptops = "";
             List<Product> phonesList = (from p in db.Products where p.productType.Equals("SmartPhone") orderby p.productID  select p).Take(8).ToList();
             List<Product> lapTopsList= (from p in db.Products where p.productType.Equals("Laptop") orderby p.productID select p).Take(8).ToList();
-
 
             ViewBag.phonesList = phonesList;
             ViewBag.lapTopsList = lapTopsList;
