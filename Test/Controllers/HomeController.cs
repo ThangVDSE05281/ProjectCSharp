@@ -19,7 +19,7 @@ namespace Test.Controllers
             for (int i = 0; i < phones.Count; i++)
             {
                 resultPhones += "<div class=\"oneProduct card col-sm-3\">"
-                            +"<img class=\"card-img-top\" src=\"../../../Content/Images/"+ phones[i].image+ "\" alt=\"Card image cap\" />"
+                            +"<img class=\"card-img-top\" src=\"../../../Images/"+ phones[i].image+ "\" alt=\"Card image cap\" />"
                             +"<div class=\"card-body\">"
                                 +"<p class=\"productTitle\">"+ phones[i].name+ "</p>"
                                 + "<p class=\"productPrice\">$" + phones[i].price + "</p>"
@@ -41,7 +41,7 @@ namespace Test.Controllers
             for (int i = 0; i < laptops.Count; i++)
             {
                 resultLaptops += "<div class=\"oneProduct card col-sm-3\">"
-                            + "<img class=\"card-img-top\" src=\"../../../Content/Images/" + laptops[i].image + "\" alt=\"Card image cap\" />"
+                            + "<img class=\"card-img-top\" src=\"../../../Images/" + laptops[i].image + "\" alt=\"Card image cap\" />"
                             + "<div class=\"card-body\">"
                                 + "<p class=\"productTitle\">" + laptops[i].name + "</p>"
                                 + "<p class=\"productPrice\">$" + phones[i].price + "/p>"

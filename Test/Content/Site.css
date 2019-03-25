@@ -130,3 +130,43 @@ textarea {
   background-color: #303030;
   text-transform: uppercase;
 }
+
+/*Footer*/
+#myFooter {
+    background-color: #3c3d41;
+    color: white;
+    margin-top: 20px;
+    padding-top: 30px;
+    font-size: 20px;
+    margin-bottom: -20px;
+}
+.footer-copyright {
+    background-color: #333333;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+}
+#myFooter .social-networks {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 16px;
+}
+#myFooter .social-networks a {
+    color: white;
+    font-size: 34px;
+    margin-right: 10px;
+}
+#myFooter .btn {
+    color: white;
+    background-color: #d84b6b;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    width: 150px;
+    display: block;
+    margin: 10px auto;
+    line-height: 25px;
+}
+#myFooter .col-sm-2>ul>li>a {
+    color: white;
+}
