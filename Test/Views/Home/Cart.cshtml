@@ -4,5 +4,15 @@
 }
 
 <h2>Cart</h2>
-@Html.Raw(ViewBag.id)
+
+@if (ViewBag.cartItems != null)
+{
+    foreach (var x in ViewBag.cartItems)
+    {
+        <div>
+            <span>@x.productID</span>
+            <span>@x.quantity</span>
+        </div>
+    }
+}
 

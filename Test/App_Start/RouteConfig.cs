@@ -20,8 +20,8 @@ namespace Test
             );
             routes.MapRoute(
                 name: "AddCart",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "AddCart", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{id}/{quantity}",
+                defaults: new { controller = "Home", action = "AddCart", id = UrlParameter.Optional,quantity= UrlParameter.Optional }
             );
         }
     }

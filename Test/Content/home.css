@@ -1,6 +1,32 @@
 ﻿*{
 }
 
+span#cartItemsSize {
+    color: white;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    background: #F36E36;
+    border-radius: 50%;
+    top: 5px;
+    right: -16px;
+}
+
+ul.nav.navbar-nav.navbar-right {
+    padding-right: 20px;
+}
+
+.cart i {color: white;font-size: 30px;}
+
+.cart {
+    float: right;
+    padding-top: 20px;
+    position: relative;
+}
+
 .oneProduct.card.col-sm-3 {
     border: 1px solid white;
     margin-bottom: 5px;
