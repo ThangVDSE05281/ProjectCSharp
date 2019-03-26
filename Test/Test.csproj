@@ -257,11 +257,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Product.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Product1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Product.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\searchByName_Result.cs">
       <DependentUpon>Product.tt</DependentUpon>
     </Compile>
@@ -316,7 +311,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -353,12 +350,10 @@
     <Content Include="Views\Home\AddCart.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Home\ViewProduct.cshtml" />
-
     <Content Include="Views\PhonePage\Index.cshtml" />
     <Content Include="Views\LapTopPage\Index.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Shared\_SidebarPartial.cshtml" />
-
     <Content Include="Views\Shared\_SidebarPartial.cshtml" />
     <Content Include="Views\News\ViewPost.cshtml" />
   </ItemGroup>

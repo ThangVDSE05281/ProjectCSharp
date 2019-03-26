@@ -394,22 +394,6 @@
           <Property Type="Boolean" Name="status" Nullable="true" />
           <Property Type="Int64" Name="row" Nullable="true" />
         </ComplexType>
-
-          <EntitySet Name="News" EntityType="Model.News" />
-        </EntityContainer>
-        <EntityType Name="News">
-          <Key>
-            <PropertyRef Name="postId" />
-          </Key>
-          <Property Name="postId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="postContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="viewCount" Type="Int32" />
-          <Property Name="commentCount" Type="Int32" />
-          <Property Name="shareCount" Type="Int32" />
-        </EntityType>
-
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
