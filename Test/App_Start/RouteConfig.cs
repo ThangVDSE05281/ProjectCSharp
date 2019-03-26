@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-
+using Test.Models;
 namespace Test
 {
     public class RouteConfig
@@ -43,6 +43,7 @@ namespace Test
                url: "{controller}/{action}/{id}",
                defaults: new { controller = "Cart", action = "UpdateProductSession", id = UrlParameter.Optional,quantity=UrlParameter.Optional }
           );
+           
         }
         
     }

@@ -1,12 +1,15 @@
 ﻿
+@using Test.Models
 @{
     ViewBag.Title = "ViewCart";
     Layout = "~/Views/Shared/_Layout.cshtml";
     int sum = 0;
-    for(var i = 0; i < ViewBag.listProduct.Count; i++)
+    for (var i = 0; i < ViewBag.listProduct.Count; i++)
     {
         sum += (int)ViewBag.listProduct[i].price * ViewBag.listInvoiceLine[i].quantity;
     }
+    List<InvoiceLine> listInvoiceLine = ViewBag.listInvoiceLine;
+    int total = ViewBag.listProduct.Count;
 
 }
 
@@ -16,86 +19,130 @@
 </div>
 
 
-    <div class="col-md-8">
-        @if (ViewBag.listProduct != null && ViewBag.listInvoiceLine != null)
+<div class="col-md-8">
+    @if (ViewBag.listProduct != null && ViewBag.listInvoiceLine != null)
+    {
+
+        foreach (var x in ViewBag.listProduct)
         {
 
-            foreach (var x in ViewBag.listProduct)
-            {
+            <div class="foodPay" id="item@(x.productID)">
+                <div class="row">
 
-                <div class="foodPay" id="item@(x.productID)">
-                    <div class="row">
+                    <div class="oneFoodInCart w-100 m-3">
+                        <div class="oneFood food">
 
-                        <div class="oneFoodInCart w-100 m-3">
-                            <div class="oneFood food">
+                            <div class="foodImg">
 
-                                <div class="foodImg">
-
-                                    <img src="../../../Images/@x.image" alt="ProductImg" />
-                                    <div style="opacity: 0" id="image@(x.productID)">@x.image</div>
-                                    <div style="opacity: 0" id="shop@(x.productID)">@x.shopID</div>
-                                </div>
-                                <div class="foodName" id="name@(x.productID)">@x.name</div>
-                                @foreach (var y in ViewBag.listInvoiceLine)
-                                {
-                                    if (x.productID == y.productID)
-                                    {
-                                        <input type="number" name="@(x.productID)" onChange="pushProductSession()" value="@(y.quantity)" class="slsp pushProduct" id="@(x.productID)" />
-                                    }
-                                }
-
-                                <div class="foodPrice mt-5" id="price@(x.productID)">@x.price</div>
+                                <img src="../../../Images/@x.image" alt="ProductImg" />
+                                <div style="opacity: 0" id="image@(x.productID)">@x.image</div>
+                                <div style="opacity: 0" id="shop@(x.productID)">@x.shopID</div>
                             </div>
-                            <form class="formRemoveProduct" method="POST">
-                                <button type="submit" class="btn btn-danger mt-3 removeItem" data-id="@(x.productID)"><i class="fas fa-trash-alt"></i> Remove</button>
-                            </form>
+                            <div class="foodName" id="name@(x.productID)">@x.name</div>
+                            @foreach (var y in ViewBag.listInvoiceLine)
+                            {
+                                if (x.productID == y.productID)
+                                {
+                                    <input type="number" name="@(x.productID)" onChange="pushProductSession()" value="@(y.quantity)" class="slsp pushProduct" id="@(x.productID)" />
+                                }
+                            }
 
-                            <hr />
+                            <div class="foodPrice mt-5" id="price@(x.productID)">@x.price</div>
                         </div>
+                        <form class="formRemoveProduct" method="POST">
+                            <button type="submit" class="btn btn-danger mt-3 removeItem" data-id="@(x.productID)"><i class="fas fa-trash-alt"></i> Remove</button>
+                        </form>
+
+                        <hr />
                     </div>
                 </div>
-            }
-        }
-        else
-        {
-            <div class="text-center">
-                <div class="alert alert-warning" style="display:block" role="alert" id="alert">
-                    <h2>You have no Invoice</h2>
-                </div>
-
-                <a href="/home"><button class="btn btn-info">Click here to shopping!</button></a>
             </div>
         }
-
-    </div>
-    <div class="col-md-4 payment" style="position:sticky;top: 50px;">
-        <div class="card text-center ">
-            <div class="card-body">
-                <h4 class="card-title">Thông tin đơn hàng</h4>
-                <p class="card-text">Tạm tính</p>
-                <div class="totalPrice">
-                    @sum Đ
-                </div>
-                <div class="row">
-                    <label class="col-4">Họ và tên:</label>
-                    <input required maxlength="20" class="inputAddress col-8" type="text" placeholder="Tên" id="name" />
-                </div>
-                <div class="row">
-                    <label class="col-4">Nhập Email:</label>
-                    <input required maxlength="20" class="inputAddress col-8" type="text" placeholder="Email" id="email" />
-                </div>
-                <div class="row">
-                    <label class="col-4">Nhập địa chỉ:</label>
-                    <input required maxlength="20" class="inputAddress col-8" type="text" placeholder="Địa chỉ" id="address" />
-                </div>
-                <div class="row">
-                    <label class="col-4">Số điện thoại:</label>
-                    <input required maxlength="20" class="inputPhone col-8" type="text" placeholder="SĐT" id="phone" />
-                </div>
-                <input class="btn btn-warning datHang" data-id="${shop}" value="Đặt Hàng" type="submit" />
+    }
+    else
+    {
+        <div class="text-center">
+            <div class="alert alert-warning" style="display:block" role="alert" id="alert">
+                <h2>You have no Invoice</h2>
             </div>
+
+            <a href="/home"><input type="button" class="btn btn-info">Click here to shopping!/></a>
+        </div>
+    }
+
+</div>
+<div class="col-md-4 payment" style="position:sticky;top: 50px;">
+    <div class="card text-center ">
+        <div class="card-body">
+            <h4 class="card-title">Thông tin đơn hàng</h4>
+            <p class="card-text">Tạm tính</p>
+            <div class="totalPrice">
+                @sum Đ
+            </div>
+            <div class="row">
+                <label class="col-4">Họ và tên:</label>
+                <input required maxlength="20" class="inputAddress col-8" type="text" placeholder="Tên" id="name"  />
+            </div>
+            <div class="row">
+                <label class="col-4">Nhập Email:</label>
+                <input required maxlength="20" class="inputAddress col-8" type="text" placeholder="Email" id="email" />
+            </div>
+            <div class="row">
+                <label class="col-4">Nhập địa chỉ:</label>
+                <input required maxlength="20" class="inputAddress col-8" type="text" placeholder="Địa chỉ" id="address" />
+            </div>
+            <div class="row">
+                <label class="col-4">Số điện thoại:</label>
+                <input required maxlength="20" class="inputPhone col-8" type="text" placeholder="SĐT" id="phone" />
+            </div>
+            <input class="btn btn-warning datHang" data-id="1" value="Đặt Hàng" type="submit" />
         </div>
     </div>
+</div>
 
 
+<script>
+    var orderList = [{}];
+    var n = 0;
 
+    orderList = JSON.parse('@Html.Raw(Json.Encode(listInvoiceLine))');
+
+    $(".datHang").click((e) => {
+        e.preventDefault();
+        console.log(document.getElementById("name").value)
+        var id = e.target.getAttribute("data-id");  //ShopID        
+        
+        if (document.getElementById("address").value != "" && document.getElementById("phone").value != "" 
+            && document.getElementById("email").value != "" && document.getElementById("name").value != "") {
+            $.ajax({
+                url: "/Cart/RemoveProduct/" + JSON.stringify(orderList),
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    array:JSON.stringify(orderList),
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                address: document.getElementById("address").value,
+            phone: document.getElementById("phone").value
+        },
+        success: function (data) {
+            console.log("send array successfully");
+            console.log(data);
+            //window.location.href = "${pageContext.request.contextPath}/container/user/Reconfirm.jsp";
+        },
+        error: function (err) {
+            console.log("Loi roi ban oi");
+            console.log(err);
+            //window.location.href = "${pageContext.request.contextPath}/container/user/Reconfirm.jsp";
+        }
+    
+    });
+    } else {
+        $("#alert").css("display", "block");
+        setTimeout(function () {
+            $("#alert").css("display", "none");
+        }, 3000);
+    }
+    });
+
+</script>

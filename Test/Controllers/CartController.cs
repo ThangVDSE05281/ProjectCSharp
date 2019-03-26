@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Test.Models;
+using Newtonsoft.Json;
 
 namespace Test.Controllers
 {
@@ -59,6 +60,7 @@ namespace Test.Controllers
             return Json(id);
         }
 
+
         public ActionResult UpdateProductSession(int id, int quantity)
         {
             //System.Diagnostics.Debug.WriteLine(id);
@@ -76,5 +78,20 @@ namespace Test.Controllers
             return Json(cartItems);
 
         }
+
+
+        public ActionResult ThanhToan(List<InvoiceLine> array)
+        {
+            try
+            {
+                System.Diagnostics.Debug.WriteLine(array);
+                System.Diagnostics.Debug.WriteLine("Hello");
+            }catch(Exception e)
+            {
+                e.ToString();
+            }
+            return Json(array, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

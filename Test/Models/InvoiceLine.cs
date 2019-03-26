@@ -31,5 +31,14 @@ namespace Test.Models
             this.unitPrice = unitPrice;
             this.Note = note;
         }
+
+        public InvoiceLine (int productID, int quantity, int unitPrice, string note)
+        {
+
+            this.productID = productID;
+            this.quantity = quantity;
+            this.unitPrice = unitPrice;
+            this.Note = note;
+        }
     }
 }
