@@ -33,7 +33,7 @@ namespace Test.Models
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Shop> Shops { get; set; }
-    
+
         public virtual ObjectResult<GetLapTopPaging_Result> GetLapTopPaging(Nullable<int> u, Nullable<int> v)
         {
             var uParameter = u.HasValue ?
@@ -89,5 +89,8 @@ namespace Test.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<searchByName_Result>("searchByName", uParameter, vParameter, wParameter);
         }
+
+        public virtual DbSet<News> News { get; set; }
+
     }
 }

@@ -215,6 +215,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PhonePageController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -352,10 +353,14 @@
     <Content Include="Views\Home\AddCart.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Home\ViewProduct.cshtml" />
+
     <Content Include="Views\PhonePage\Index.cshtml" />
     <Content Include="Views\LapTopPage\Index.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Shared\_SidebarPartial.cshtml" />
+
+    <Content Include="Views\Shared\_SidebarPartial.cshtml" />
+    <Content Include="Views\News\ViewPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

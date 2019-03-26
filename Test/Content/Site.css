@@ -170,3 +170,39 @@ textarea {
 #myFooter .col-sm-2>ul>li>a {
     color: white;
 }
+/*Style for view news page*/
+#header-news {
+    max-width: 100%;
+    min-height: 250px;
+    padding: 100px !important;
+    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    opacity: 0.95;
+}
+.news-header-title {
+    color: white;
+    text-align: center;
+}
+.news-des {
+    font-size: 25px;
+    text-align: left;
+    border-left: 5px solid coral;
+    padding-left: 5px;
+}
+article .imgwrap {
+    position: relative;
+    min-height: 100px;
+    margin-top: 5px;
+    background: #f1f1f1;
+    margin: 0 auto;
+}
+article .imgwrap img {
+    max-width: 825px;
+}
+#news-wrapper {
+    margin-top: 20px;
+    max-width: 100%;
+    padding: 15px;
+}
+.infor-news a {
+    color: white;
+}

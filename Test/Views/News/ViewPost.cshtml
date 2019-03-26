@@ -1,0 +1,116 @@
+﻿@using Test.Models
+@{
+    ViewBag.Title = "ViewPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var currenPost = ViewBag.currentPost;
+}
+<style>
+    .body-content {
+        margin-top: 0px;
+    }
+</style>
+<section id="header-news">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="news-header-title">
+                    <h1>@currenPost.title</h1>
+                    <p class="news-des">
+                        @currenPost.postContent.Substring(0, 300);
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 infor-news">
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <span class="fa fa-binoculars"> @currenPost.viewCount Lượt xem</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <span class="fa fa-comment"> @currenPost.commentCount Bình luận</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <span class="fa fa-share-square"> @currenPost.shareCount Lượt chia sẻ</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="news-wrapper">
+    <div class="row">
+        <div class="col-md-3">
+            @Html.Partial("_SidebarPartial")
+        </div>
+        <div class="col-md-9 news-content">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">News</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Hot news</li>
+                </ol>
+            </nav>
+            <section class="news-page-content">
+
+                <article class="artrating">
+                    <h2>
+                        ROM tuỳ biến muôn màu sắc cá nhân thú vị, cùng với đó là cái tên thân quen với dân công nghệ - ROM cook, từng một thời là nguồn cảm hứng với người dùng Android. Vậy hiện tại đã là 2018, anh em thích dùng Android gốc hay Android tuỳ biến hơn?
+                        Tạm gác ROM cook sang một bên, vì nó đòi hỏi người dùng phải có kiến thức sâu hơn trong việc vọc vạch, up rom ... Mình sẽ chỉ đề cập đến những thiết bị chính hãng với ROM gốc và ROM tuỳ biến sẵn có cho người dùng cơ bản.
+                    </h2>
+                    <p>
+                        Tạm gác ROM cook sang một bên, vì nó đòi hỏi người dùng phải có kiến thức sâu hơn trong việc vọc vạch, up rom ... Mình sẽ chỉ đề cập đến những thiết bị chính hãng với ROM gốc và ROM tuỳ biến sẵn có cho người dùng cơ bản.
+                    </p>
+                    <h3>
+                        <strong>ROM tuỳ biến khác nhau như thế nào?</strong>
+                    </h3>
+
+                    <p>Từ lâu các hãng sản xuất smartphone Android lớn như Samsung, LG, HTC, Sony, ... đều muốn mang màu sắc riêng của từng hãng đến người tiêu dùng. Từ đó mỗi hãng đều có những giao diện riêng với tên gọi khác nhau, Samsung thì từ TouchWiz đã chuyển hẳn sang tên gọi mới là <a href="https://www.thegioididong.com/tin-tuc/tim-kiem?key=Samsung+Experience" target="_blank" title="Samsung Experince" type="Samsung Experince">Samsung Experience</a>, LG thì có LG UX, Xiaomi thì có hẳn MIUI riêng biệt, ...</p>
+
+                    <div class="imgwrap"><img alt="ROM gốc và ROM tuỳ biến" data-original="https://cdn.tgdd.vn/Files/2018/02/22/1068704/img_7874_1280x719.jpg" title="ROM gốc và ROM tuỳ biến" class="" src="https://cdn.tgdd.vn/Files/2018/02/22/1068704/img_7874_1280x719.jpg" style="display: block;"></div>
+
+                    <p>Khi sử dụng một chiếc điện thoại, chúng ta đều mong muốn thiết bị của mình phải thật khác biệt so xung quanh và khẳng định chất tôi mỗi khi ai đó mượn chiếc máy của bạn. Từ đó xu hướng kho theme phát triển trong mỗi máy cũng dần phổ biến hơn.</p>
+                    <div class="imgwrap"><img alt="ROM gốc và ROM tuỳ biến" data-original="https://cdn.tgdd.vn/Files/2018/02/22/1068704/nova2iprimexmax-17_800x449_800x449.jpg" title="ROM gốc và ROM tuỳ biến" class="" src="https://cdn.tgdd.vn/Files/2018/02/22/1068704/nova2iprimexmax-17_800x449_800x449.jpg" style="display: block;"></div>
+                    <p>Không chỉ dừng lại ở việc "làm đẹp" smartphone, ROM tuỳ biến còn đem đến người dùng những tính năng vui vẻ và tiện lợi hơn khi sử dụng. Ví dụ như nhiều giao diện cho phép tuỳ chỉnh vị trí, số lượng phím tắt bật tắt đèn flash, chế độ đọc sách, ... đa dạng hơn nhiều so với thanh phím tắt của Android gốc.</p>
+                    <div class="imgwrap"><img alt="ROM thuần gốc và ROM tuỳ biến" data-original="https://cdn.tgdd.vn/Files/2018/02/22/1068704/img_9744_1280x720.jpg" title="ROM thuần gốc và ROM tuỳ biến" class="" src="https://cdn.tgdd.vn/Files/2018/02/22/1068704/img_9744_1280x720.jpg" style="display: block;"></div>
+                    <p>Hoặc nhiều người có thói quen hay xoá tất cả đa nhiệm khi không dùng đến, nhiều hãng đã thêm nút Clear All để đỡ tốn công xoá từng app. Thế nhưng Android gốc thì mãi tận bây giờ vẫn chưa thấy.</p>
+                    <div class="imgwrap"><img alt="ROM thuần gốc và ROM tuỳ biến" data-original="https://cdn.tgdd.vn/Files/2018/02/22/1068704/img_9739_1280x720.jpg" title="ROM thuần gốc và ROM tuỳ biến" class="" src="https://cdn.tgdd.vn/Files/2018/02/22/1068704/img_9739_1280x720.jpg" style="display: block;"></div>
+                    <p>Một điểm tuỳ biến khác đến từ một ứng dụng mà ai cũng dùng đến hằng ngày, chính là camera. Có thể nói nhờ sự tuỳ biến, giao diện camera trên các máy Android ngày nay mới đa dạng và phong phú hơn như chỉnh tay chuyên nghiệp, phơi sáng kép, chế độ làm đẹp, ... điều mà ROM gốc không thể có được.</p>
+                    <div class="imgwrap"><img alt="ROM gốc và ROM tuỳ biến" data-original="https://cdn.tgdd.vn/Files/2018/02/22/1068704/romandroid_1280x720.jpg" title="ROM gốc và ROM tuỳ biến" class="" src="https://cdn.tgdd.vn/Files/2018/02/22/1068704/romandroid_1280x720.jpg" style="display: block;"></div>
+                    <p>Cùng nhìn lại, số lượng người dùng đón chào ROM tuỳ biến vẫn rất đông, lấy ví dụ về ông lớn Samsung. Với năm 2017, Samsung đã dần hình thành một Samsung Experince lần đầu xuất hiện trên Galaxy S8 hay <a href="https://www.thegioididong.com/dtdd/samsung-galaxy-j7-pro" target="_blank" title="Galaxy J7 Pro" type="Galaxy J7 Pro">Galaxy J7 Pro</a>, với icon cách điệu bo cong đặc trưng, kho theme tuỳ biến đồ sộ, nhiều tính năng như chạy 2 tài khoản hay chụp màn hình cuộn trang, đều là những thứ người dùng vô tình cần đến trong cuộc sống.</p>
+                    <p>Xem thêm:&nbsp;<a href="https://www.thegioididong.com/tin-tuc/android-thong-tri-thi-truong-toan-cau-nhung-o-my-thi-khong-1063266" target="_blank" title="Android thống trị thị trường smartphone toàn cầu, nhưng ở Mỹ thì không" type="Android thống trị thị trường smartphone toàn cầu, nhưng ở Mỹ thì không">Android thống trị thị trường smartphone toàn cầu, nhưng ở Mỹ thì không</a></p>
+                    <h3><strong>2016, năm trỗi dậy của ROM gốc</strong></h3>
+                    <p>Đến giai đoạn 2016, chúng ta chứng kiến sự trỗi dậy mạnh mẽ của Android gốc khi phiên bản 7.0 Nougat thực sự là một phiên bản hoàn thiện nhất từ trước đến nay. Là một phiên bản Android dung hoà được về sự ổn định, yếu tố thẩm mĩ và cả tính năng.</p>
+                    <p>Thị trường chính hãng hiện tại, có thể thấy chỉ có <a href="https://www.thegioididong.com/dtdd-motorola" target="_blank" title="Moto" type="Moto">Moto</a> và Nokia đang đi theo hướng phát triển trên nền Android gốc.&nbsp;</p>
+                    <div class="imgwrap"><img alt="ROM gốc và ROM tuỳ biến" data-original="https://cdn.tgdd.vn/Files/2018/02/22/1068704/img_0157_800x450_800x450.jpg" title="ROM gốc và ROM tuỳ biến" class="" src="https://cdn.tgdd.vn/Files/2018/02/22/1068704/img_0157_800x450_800x450.jpg" style="display: block;"></div>
+                    <p>Không cần sự màu mè giao diện, sự ổn định là yếu tố khiến các thiết bị giá rẻ tầm 2 - 3 triệu chính hãng như <a href="https://www.thegioididong.com/dtdd/motorola-moto-c-plus" target="_blank" title="Moto C Plus" type="Moto C Plus">Moto C Plus</a>&nbsp;hay <a href="https://www.thegioididong.com/dtdd/nokia-3" target="_blank" title="Nokia 3" type="Nokia 3">Nokia 3</a>, đem đến sự mượt mà cho người dùng dù cấu hình không quá nổi trội. Điều mà các máy chính hãng của hãng khác khó lòng bì kịp.</p>
+                    <div class="imgwrap"><img alt="ROM gốc và ROM tuỳ biến" data-original="https://cdn.tgdd.vn/Files/2018/02/22/1068704/img_7903_800x450_800x450.jpg" title="ROM gốc và ROM tuỳ biến" class="" src="https://cdn.tgdd.vn/Files/2018/02/22/1068704/img_7903_800x450_800x450.jpg" style="display: block;"></div>
+                    <p>Yếu tố thứ hai đến từ việc cập nhật, cảm giác của bạn thế nào khi chiếc <a href="https://www.thegioididong.com/dtdd/xiaomi-mi-a1" target="_blank" title="Xiaomi Mi A1" type="Xiaomi Mi A1">Xiaomi Mi A1</a> giá chỉ 6 triệu hay Moto X4 chỉ có 9 triệu, nhưng đã lên Android 8.0 chính thức? Trong khi đó Galaxy S8, LG G6, ... vẫn đang chờ đợi từng ngày? Nhiều bạn sẽ nói là Huawei Mate 10 Pro hay LG V30 đã lên Android 8 rồi đấy thôi, vậy thế còn Android 9.0 thì sẽ ra sao?</p>
+                    <div class="imgwrap"><img alt="ROm gốc và ROM tuỳ biến" data-original="https://cdn.tgdd.vn/Files/2018/02/22/1068704/img_8456_800x450_800x450.jpg" title="ROm gốc và ROM tuỳ biến" class="" src="https://cdn.tgdd.vn/Files/2018/02/22/1068704/img_8456_800x450_800x450.jpg" style="display: block;"></div>
+                    <p>Không chỉ hơn về mặt ổn định và cập nhật, Android thuần gốc còn đem đến những dịch vụ hỗ trợ đi kèm mà nhiều hãng muốn lược bỏ đi. Bạn có bao giờ nhận thấy các máy chạy Android gốc, thậm chí là các máy HTC với thư viện sử dụng chung với Google Photos, luôn đồng bộ và tốc độ đồng bộ rất nhanh? Không chỉ Photos, mà ngay cả Mail, Lịch, Office, Files đều như thế.</p>
+                    <div class="imgwrap"><img alt="ROM thuần gốc và ROM tuỳ biến" data-original="https://cdn.tgdd.vn/Files/2018/02/22/1068704/img_7794_800x450_800x450.jpg" title="ROM thuần gốc và ROM tuỳ biến" class="" src="https://cdn.tgdd.vn/Files/2018/02/22/1068704/img_7794_800x450_800x450.jpg" style="display: block;"></div>
+                    <p>Chưa kể đến với những hãng như Samsung, LG, Huawei đều có những ứng dụng mặc định riêng về đồng hồ, thư viện, quản lí file, ... nhưng người dùng vẫn cần lưu trữ đám mây từ Google. Và thế là bạn phải tốn thêm bộ nhớ trong cho 2 ứng dụng thư viện, lịch, ghi chú hay thậm chí là mail.</p>
+                    <p>Xem thêm:&nbsp;<a href="https://www.thegioididong.com/tin-tuc/trai-nghiem-android-one-tren-xiaomi-mi-a1-1043955" target="_blank" title="Trải nghiệm Android One trên Xiaomi Mi A1: Có khác gì với Android thuần?" type="Trải nghiệm Android One trên Xiaomi Mi A1: Có khác gì với Android thuần?">Trải nghiệm Android One trên Xiaomi Mi A1: Có khác gì với Android thuần?</a></p>
+                    <h3><strong>Bạn thích ROM gốc hay ROM tuỳ biến hơn?</strong></h3>
+                    <p>Có thể thấy ngoài việc không thể đa dạng hoá về phần theme, cơ bản Android gốc cũng rất đẹp và tinh tế theo phong cách phẳng, dường như ROM gốc mang đến cho người dùng khá nhiều thứ hay ho như cập nhật nhanh, ổn định, đáp ứng hết mọi nhu cầu của một chiếc smartphone từ đồng bộ, tính năng, ...</p>
+                    <p>Thế nhưng nhờ các tính năng sáng tạo từ việc tuỳ biến của Samsung, LG hay Xiaomi, ... thì giờ đây Android 7.0 mới có được việc chia đôi cửa sổ ứng dụng, Android 8 mới có Picture-in-picture,...</p>
+                    <div class="imgwrap"><img alt="ROM gốc và ROM tuỳ biến" data-original="https://cdn.tgdd.vn/Files/2018/02/22/1068704/dscf4791_800x450_800x450.jpg" title="ROM gốc và ROM tuỳ biến" class="" src="https://cdn.tgdd.vn/Files/2018/02/22/1068704/dscf4791_800x450_800x450.jpg" style="display: block;"></div>
+                    <p>Anh em đang dùng máy gì và thích team <strong><em>#ROMgốc</em></strong> hay&nbsp;<strong><em>#ROMtuỳbiến</em></strong> ? Hãy cùng bình luận ngay phía bên dưới lí do mà bạn thích nhé!</p>
+
+                    <hr>
+                    <p>
+                        <span>Xem thêm:</span>
+                        <a href="">Bạn có biết: Jelly Bean là phiên bản Android cuối cùng đạt 50% thị phần</a>
+                    </p>
+
+                </article>
+
+            </section>
+        </div>
+    </div>
+</section>
+

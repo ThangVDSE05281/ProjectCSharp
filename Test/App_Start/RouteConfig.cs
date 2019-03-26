@@ -18,16 +18,19 @@ namespace Test
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
             routes.MapRoute(
                 name: "AddCart",
                 url: "{controller}/{action}/{id}/{quantity}",
                 defaults: new { controller = "Home", action = "AddCart", id = UrlParameter.Optional,quantity= UrlParameter.Optional }
             );
+
             routes.MapRoute(
                 name: "ProductDetails", 
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "ViewProduct", id=UrlParameter.Optional }
            );
+
             routes.MapRoute(
                 name: "Phone",
                 url: "{controller}/{action}",
@@ -59,6 +62,14 @@ namespace Test
                 url: "{controller}/{action}",
                 defaults: new { controller = "Search", action = "GetFirstSearch" }
             );
+
+
+            routes.MapRoute(
+                name: "News",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "News", action = "ViewPost", id = UrlParameter.Optional }
+           );
+
         }
     }
 }
