@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace Test.Controllers
 {
-    
+
 
     public class CartController : Controller
     {
@@ -19,22 +19,32 @@ namespace Test.Controllers
             //getmaxCurrentInvoice
             int currentInvoice = db.Invoices.Max(x => x.invoiceID);
             int nextInvoice = currentInvoice + 1;
-            List<InvoiceLine> listInvoiceLine = new List<InvoiceLine>();
-            //list product
-            List<Product> listProduct = new List<Product>();
-            //get cartItems from session
             List<CartItem> cartItems = Session["CartItems"] as List<CartItem>;
-            for (int i = 0; i < cartItems.Count; i++)
+            
+            List<InvoiceLine> listInvoiceLine = null;
+            //list product
+            List<Product> listProduct = null;
+            //get cartItems from session
+            if (cartItems != null && cartItems.Count>0)
             {
-                int k = cartItems[i].productID;
-                Product product = db.Products.Single(p => p.productID == k);
-                listProduct.Add(product);
+                listProduct = new List<Product>();
+                listInvoiceLine = new List<InvoiceLine>();
+                for (int i = 0; i < cartItems.Count; i++)
+                {
+                    int k = cartItems[i].productID;
+                    Product product = db.Products.Single(p => p.productID == k);
+                    listProduct.Add(product);
 
-                listInvoiceLine.Add(new InvoiceLine(nextInvoice,product.productID, (int)cartItems[i].quantity,(int) product.price, "Note"));
-                
+                    listInvoiceLine.Add(new InvoiceLine(nextInvoice, product.productID, (int)cartItems[i].quantity, (int)product.price, "Note"));
+
+                }
+                ViewBag.listInvoiceLine = listInvoiceLine;
+                ViewBag.listProduct = listProduct;
+                Session["CartItemsSize"] = cartItems.Count;
+            }else
+            {
+                Session["CartItemsSize"] = 0;
             }
-            ViewBag.listInvoiceLine = listInvoiceLine;
-            ViewBag.listProduct = listProduct;
             return View();
         }
 
@@ -54,17 +64,18 @@ namespace Test.Controllers
             Session.Remove("CartItems");
 
             Session["CartItems"] = cartItems;
+            Session["CartItemsSize"] = cartItems.Count;
             System.Diagnostics.Debug.WriteLine((int)cartItems.Count);
 
             //Return productId is removed -> change Front-End
-            return Json(id);
+            return Json(cartItems);
         }
 
 
         public ActionResult UpdateProductSession(int id, int quantity)
         {
             //System.Diagnostics.Debug.WriteLine(id);
-            List<CartItem> cartItems = Session["CartItems"] as List<CartItem>;            
+            List<CartItem> cartItems = Session["CartItems"] as List<CartItem>;
             for (int i = 0; i < cartItems.Count; i++)
             {
                 if (cartItems[i].productID == id)
@@ -74,23 +85,91 @@ namespace Test.Controllers
             }
 
             Session.Remove("CartItems");
-            Session["CartItems"] = cartItems;                        
+            Session["CartItems"] = cartItems;
+            Session["CartItemsSize"] = cartItems.Count;
             return Json(cartItems);
 
         }
 
 
-        public ActionResult ThanhToan(List<InvoiceLine> array)
+        public ActionResult ThanhToan(string array, string name, string email, string address, string phone)
         {
-            try
+            //try
+            //{
+            //    System.Diagnostics.Debug.WriteLine(array);
+            //   JsonConvert.DeserializeObject(array,typeof(List<InvoiceLine>));
+
+
+
+            //}
+            //catch (Exception e)
+            //{
+            //    e.ToString();
+            //}
+
+
+
+            //Insert new user's information
+            int currentInfo = db.Information.Max(x => x.userID);
+            //System.Diagnostics.Debug.WriteLine(currentInfo);
+            Information user = new Information();
+            user.name = name;
+            user.email = email;
+            user.phoneNumber = phone;
+            user.address = address;
+            db.Information.Add(user);
+            db.SaveChanges();
+            currentInfo = db.Information.Max(x => x.userID);
+            //System.Diagnostics.Debug.WriteLine(currentInfo);
+            //Insert newInvoice
+            DateTime today = DateTime.Today;
+            Invoice newInvoice = new Invoice();
+            newInvoice.userID = currentInfo;
+            newInvoice.orderTIme = today;
+            db.Invoices.Add(newInvoice);
+            db.SaveChanges();
+            //System.Diagnostics.Debug.WriteLine(today);
+            //get currentInvoice
+            int currentInvoice = db.Invoices.Max(x => x.invoiceID);
+            //System.Diagnostics.Debug.WriteLine(currentInvoice);
+
+
+            List<CartItem> cartItems = Session["CartItems"] as List<CartItem>;
+            //System.Diagnostics.Debug.WriteLine(cartItems.Count);
+            List<Product> listProduct = new List<Product>();
+            //System.Diagnostics.Debug.WriteLine("Hello");
+            for (int i = 0; i < cartItems.Count; i++)
             {
-                System.Diagnostics.Debug.WriteLine(array);
-                System.Diagnostics.Debug.WriteLine("Hello");
-            }catch(Exception e)
-            {
-                e.ToString();
+                int k = (int)cartItems[i].productID;
+                Product product = db.Products.Single(p => p.productID == k);
+
+                InvoiceLine line = new InvoiceLine();
+                line.Note = "Note";
+                line.productID = product.productID;
+                line.invoiceID = currentInvoice;
+                line.quantity = (int)cartItems[i].quantity;
+                line.unitPrice = (int)product.price;
+                db.InvoiceLine.Add(line);
+                db.SaveChanges();
+                int m = db.InvoiceLine.Max(x => x.invoiceID);
+                //System.Diagnostics.Debug.WriteLine(m);
             }
-            return Json(array, JsonRequestBehavior.AllowGet);
+
+            return Json(currentInfo);
+        }
+
+        public ActionResult Checkout(int id)
+        {
+            System.Diagnostics.Debug.WriteLine(id);
+
+
+            int max = db.Information.Max(y => y.userID);
+            Information currentInfo = db.Information.Single(x => x.userID == max);
+
+            ViewBag.info = currentInfo;
+            Session.Remove("CartItems");
+            Session["CartItemsSize"] = 0;
+            return View();
         }
 
     }

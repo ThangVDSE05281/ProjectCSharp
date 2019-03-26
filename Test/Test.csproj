@@ -325,6 +325,7 @@
     <Content Include="Views\Home\ViewProduct.cshtml" />
     <Content Include="Views\Shared\Cart.cshtml" />
     <Content Include="Views\Cart\ViewCart.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

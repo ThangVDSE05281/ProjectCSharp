@@ -45,14 +45,18 @@ $(".removeItem").click((e) => {
         $.ajax({
             url: "/Cart/RemoveProduct/" + id,
             type: 'POST',            
-            success: function (deletedId) {
+            success: function (data) {
+                var cartItemsSize = $('#cartItemsSize');
+                cartItemsSize.text(data.length);
+                window.location.href = "/Cart/ViewCart";
+                //$('#item' + deletedId).remove();
 
-                $('#item' + deletedId).remove();
             },
             error: function (err) {
                 console.log(err);
             }
         });
     });
+
 });
 

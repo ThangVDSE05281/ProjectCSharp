@@ -1,0 +1,86 @@
+﻿@using Test.Models;
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    double total = 0;
+    Entities db = new Entities();
+    int k = ViewBag.info.userID;
+    List<Product> products = new List<Product>();
+    products = (from info in db.Information
+                join invoice in db.Invoices on info.userID equals invoice.userID
+                join line in db.InvoiceLine on invoice.invoiceID equals line.invoiceID
+                join product in db.Products on line.productID equals product.productID
+                where info.userID == k
+                select product).ToList();
+
+    List<InvoiceLine> invoiceLines = new List<InvoiceLine>();
+    invoiceLines = (from info in db.Information
+                    join invoice in db.Invoices on info.userID equals invoice.userID
+                    join line in db.InvoiceLine on invoice.invoiceID equals line.invoiceID
+                    join product in db.Products on line.productID equals product.productID
+                    where info.userID == k
+                    select line).ToList();
+
+    foreach (var x in products)
+    {
+        foreach (var y in invoiceLines)
+        {
+            if (x.productID == y.productID)
+            {
+                total += x.price * y.quantity;
+            }
+        }
+    }
+}
+
+<div class="row" style="margin-top:200px">
+    <div class="col-4 hovereffect3 text-center">
+        <!--Image-->
+        
+    </div>
+    <div class="col-md-8">
+        <h1>Hello, @ViewBag.info.name</h1>
+        <h3>Address: @ViewBag.info.address</h3>
+        <h3>Phone: @ViewBag.info.phoneNumber</h3>
+        <div class="alert alert-success" style="display:block" role="alert" id="alert">
+            <h5>You has ordered successfully!!</h5>
+            <p>Your products are coming!!!</p>
+        </div>
+        <div>
+            <c:set var="total" scope="session" value="0" />
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ProductID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in products)
+                    {
+                        <tr>
+                            <td>@x.productID</td>
+                            <td>@x.name</td>
+                            <td><img src="../../../Images/@x.image" alt="ProductImg" height=100 width=100 /></td>
+                            <td>@x.price</td>
+                            @foreach (var y in invoiceLines)
+                            {
+                                if (x.productID == y.productID && y.quantity>0)
+                                {
+                                    <td>@y.quantity</td>
+                                }
+                            }
+
+                        </tr>
+                        
+                    }
+                </tbody>
+            </table>
+
+            <h3>Your total price:   @total Đ</h3>
+        </div>
+    </div>
+</div>

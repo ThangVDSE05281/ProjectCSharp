@@ -27,8 +27,9 @@ namespace Test.Models
     
         public virtual DbSet<Information> Information { get; set; }
         public virtual DbSet<Invoice> Invoices { get; set; }
-        public virtual DbSet<InvoiceLine> InvoiceLines { get; set; }
+        public virtual DbSet<InvoiceLine> InvoiceLine { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Shop> Shops { get; set; }
+        public object Informations { get; internal set; }
     }
 }

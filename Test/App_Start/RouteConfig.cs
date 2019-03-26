@@ -43,7 +43,16 @@ namespace Test
                url: "{controller}/{action}/{id}",
                defaults: new { controller = "Cart", action = "UpdateProductSession", id = UrlParameter.Optional,quantity=UrlParameter.Optional }
           );
-           
+            routes.MapRoute(
+               name: "ThanhToan",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Cart", action = "ThanToan"}
+          );
+            routes.MapRoute(
+               name: "Checkout",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Cart", action = "Checkout",id=UrlParameter.Optional }
+          );
         }
         
     }
