@@ -10,7 +10,7 @@
             </div>
             <div class="col-md-9">
                 <div class="listProduct listLaptop">
-                    <div class="listProductHeader"><i class="fas fa-th"></i>Laptop</div>
+                    <div class="listProductHeader"><a href="/PhonePage"><i class="fas fa-th"></i>Điện thoại</a></div>
                     <div class="row">
                         @if (ViewBag.phonesList != null)
                         {
@@ -29,7 +29,7 @@
                                             <hr style="margin:2px 0" >
                                             <div class="productDetailLink">
                                                 <i class="fas fa-info-circle"></i>
-                                                <a href="@Url.Action("ViewProduct","Home")/@x.productID"> More details</a>
+                                                <a href="/Home/ViewProduct/@x.productID"> More details</a>
                                             </div>
                                         </div>
                                     </div>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="listProduct listMobile">
-                    <div class="listProductHeader"><i class="fas fa-th"></i>Điện thoại</div>
+                    <div class="listProductHeader"><a href="/LapTopPage"><i class="fas fa-th"></i>LapTop</a></div>
                     <div class="row">
                         @if (ViewBag.lapTopsList != null)
                         {
@@ -58,7 +58,7 @@
                                             <hr style="margin:2px 0">
                                             <div class="productDetailLink">
                                                 <i class="fas fa-info-circle"></i>
-                                                <a href="@Url.Action("ViewProduct","Home")/@x.productID"> More details</a>
+                                                <a href="/Home/ViewProduct/@x.productID"> More details</a>
                                             </div>
                                         </div>
                                     </div>

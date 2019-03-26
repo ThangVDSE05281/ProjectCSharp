@@ -32,10 +32,44 @@ namespace Test
            );
 
             routes.MapRoute(
+                name: "Phone",
+                url: "{controller}/{action}",
+                defaults: new { controller = "PhonePage", action = "Index" }
+            );
+            routes.MapRoute(
+                name: "PhonePaging",
+                url: "{controller}/{action}/{page}",
+                defaults: new { controller = "PhonePage", action = "Paging", page = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "LapTop",
+                url: "{controller}/{action}",
+                defaults: new { controller = "LapTopPage", action = "Index" }
+            );
+            routes.MapRoute(
+                name: "LapTopPaging",
+                url: "{controller}/{action}/{page}",
+                defaults: new { controller = "LapTopPage", action = "Paging", page = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Search",
+                url: "{controller}/{action}",
+                defaults: new { controller = "Search", action = "Index" }
+            );
+            routes.MapRoute(
+                name: "GetFirstSearch",
+                url: "{controller}/{action}",
+                defaults: new { controller = "Search", action = "GetFirstSearch" }
+            );
+
+
+            routes.MapRoute(
                 name: "News",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "News", action = "ViewPost", id = UrlParameter.Optional }
            );
+
         }
     }
 }

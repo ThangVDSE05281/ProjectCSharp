@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <!--Home body-->
+    <div class="container homeContent mt-3 mb-3">
+        <div class="row">
+            <div class="col-md-3">
+                @Html.Partial("_SidebarPartial");
+            </div>
+            <div class="col-md-9">
+                @if (ViewBag.phonesList != null)
+                {
+                <div class="searchTitle">Tìm thấy kết quả phù hợp với từ khóa "@Html.Raw(ViewBag.searchString)":</div>
+                <div class="listProductCategory" id="listProductCategory">
+                        @foreach (var x in ViewBag.phonesList)
+                        {
+                            <div class="oneProduct oneProductInPhone card col-sm-3">
+                                <img class="card-img-top" src="../../../Images/@x.image " alt="Card image cap" />
+                                <div class="card-body">
+                                    <p class="productTitle">@x.name</p>
+                                    <p class="productPrice">$@x.price</p>
+                                    <div class="productControl">
+                                        <div class="addProductCart">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            <a onclick="addToCart(@x.productID)" style="cursor:pointer"> Add to cart</a>
+                                        </div>
+                                        <hr style="margin:2px 0">
+                                        <div class="productDetailLink">
+                                            <i class="fas fa-info-circle"></i>
+                                            <a href="/Home/ViewProduct/@x.productID"> More details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    
+                </div>
+                <div class="row d-flex justify-content-center mt-3">
+                    <div id="loadMorePhone" class="searchButton" page="2">XEM THÊM SẢN PHẨM</div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!-- Home body-->
+</div>
