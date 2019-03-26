@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Information">
           <Key>
             <PropertyRef Name="userID" />
@@ -77,9 +77,7 @@
           <Property Name="shopname" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="shopImageURL" Type="nvarchar" MaxLength="400" Nullable="false" />
         </EntityType>
-
         <Association Name="FK__Invoice__userID__1A14E395">
-
           <End Role="Information" Type="Self.Information" Multiplicity="1" />
           <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
           <ReferentialConstraint>
@@ -139,9 +137,7 @@
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
-
           <AssociationSet Name="FK__Invoice__userID__1A14E395" Association="Self.FK__Invoice__userID__1A14E395">
-
             <End Role="Information" EntitySet="Information" />
             <End Role="Invoice" EntitySet="Invoice" />
           </AssociationSet>
@@ -154,7 +150,8 @@
             <End Role="InvoiceLine" EntitySet="InvoiceLine" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -291,7 +288,6 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="InvoiceLine" EntitySet="InvoiceLines" />
           </AssociationSet>
-
           <FunctionImport Name="GetLapTopPaging" ReturnType="Collection(Model.GetLapTopPaging_Result)">
             <Parameter Name="u" Mode="In" Type="Int32" />
             <Parameter Name="v" Mode="In" Type="Int32" />
@@ -477,7 +473,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-
           <FunctionImportMapping FunctionImportName="GetLapTopPaging" FunctionName="Model.Store.GetLapTopPaging">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Model.GetLapTopPaging_Result">
@@ -578,20 +573,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-
-          <EntitySetMapping Name="News">
-            <EntityTypeMapping TypeName="Model.News">
-              <MappingFragment StoreEntitySet="News">
-                <ScalarProperty Name="shareCount" ColumnName="shareCount" />
-                <ScalarProperty Name="commentCount" ColumnName="commentCount" />
-                <ScalarProperty Name="viewCount" ColumnName="viewCount" />
-                <ScalarProperty Name="postContent" ColumnName="postContent" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="postId" ColumnName="postId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
