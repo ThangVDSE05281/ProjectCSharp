@@ -15,10 +15,10 @@ namespace Test.Controllers
         {
             List<Product> phonesList = (from p in db.Products where p.productType.Equals("SmartPhone") orderby p.productID  select p).Take(8).ToList();
             List<Product> lapTopsList= (from p in db.Products where p.productType.Equals("Laptop") orderby p.productID select p).Take(8).ToList();
-
+            List<News> news = (from tblNews in db.News select tblNews).Take(4).ToList();
             ViewBag.phonesList = phonesList;
             ViewBag.lapTopsList = lapTopsList;
-
+            ViewBag.news = news;
             return View();
         }
         public ActionResult AddCart(int id, int quantity)

@@ -30,5 +30,6 @@ namespace Test.Models
         public virtual DbSet<InvoiceLine> InvoiceLines { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Shop> Shops { get; set; }
+        public virtual DbSet<News> News { get; set; }
     }
 }

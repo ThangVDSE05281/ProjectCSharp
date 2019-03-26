@@ -13,6 +13,7 @@
         <AssociationConnector Association="Model.FK__Invoice__userID__182C9B23" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_profile_sender_id" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_profil_receiver_id" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.News" Width="1.5" PointX="7.625" PointY="0.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

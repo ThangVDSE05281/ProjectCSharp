@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\ASUS\Desktop\semester5\QTOnline\ProjectCSharp\Test\Models\Product.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\Study FPT\KY 5\PRN292\ProjectCSharp\Test\Models\Product.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
