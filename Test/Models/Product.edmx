@@ -34,6 +34,18 @@
           <Property Name="unitPrice" Type="float" Nullable="false" />
           <Property Name="Note" Type="nvarchar" MaxLength="1000" />
         </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="postId" />
+          </Key>
+          <Property Name="postId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="255" />
+          <Property Name="image" Type="nvarchar" MaxLength="255" />
+          <Property Name="postContent" Type="text" />
+          <Property Name="viewCount" Type="int" />
+          <Property Name="commentCount" Type="int" />
+          <Property Name="shareCount" Type="int" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="productID" />
@@ -65,7 +77,7 @@
           <Property Name="shopname" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="shopImageURL" Type="nvarchar" MaxLength="400" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Invoice__userID__182C9B23">
+        <Association Name="FK__Invoice__userID__1A14E395">
           <End Role="Information" Type="Self.Information" Multiplicity="1" />
           <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
           <ReferentialConstraint>
@@ -101,13 +113,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetLapTopPaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="u" Type="int" Mode="In" />
+          <Parameter Name="v" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetPhonePaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="u" Type="int" Mode="In" />
+          <Parameter Name="v" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetProductPaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="u" Type="int" Mode="In" />
+          <Parameter Name="v" Type="int" Mode="In" />
+        </Function>
+        <Function Name="searchByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="u" Type="int" Mode="In" />
+          <Parameter Name="v" Type="int" Mode="In" />
+          <Parameter Name="w" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Information" EntityType="Self.Information" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InvoiceLine" EntityType="Self.InvoiceLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Invoice__userID__182C9B23" Association="Self.FK__Invoice__userID__182C9B23">
+          <AssociationSet Name="FK__Invoice__userID__1A14E395" Association="Self.FK__Invoice__userID__1A14E395">
             <End Role="Information" EntitySet="Information" />
             <End Role="Invoice" EntitySet="Invoice" />
           </AssociationSet>
@@ -134,7 +164,7 @@
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="phoneNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Invoices" Relationship="Self.FK__Invoice__userID__182C9B23" FromRole="Information" ToRole="Invoice" />
+          <NavigationProperty Name="Invoices" Relationship="Self.FK__Invoice__userID__1A14E395" FromRole="Information" ToRole="Invoice" />
         </EntityType>
         <EntityType Name="Invoice">
           <Key>
@@ -143,7 +173,7 @@
           <Property Name="invoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="orderTIme" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="userID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Information" Relationship="Self.FK__Invoice__userID__182C9B23" FromRole="Invoice" ToRole="Information" />
+          <NavigationProperty Name="Information" Relationship="Self.FK__Invoice__userID__1A14E395" FromRole="Invoice" ToRole="Information" />
           <NavigationProperty Name="InvoiceLines" Relationship="Self.fk_profile_sender_id" FromRole="Invoice" ToRole="InvoiceLine" />
         </EntityType>
         <EntityType Name="InvoiceLine">
@@ -158,6 +188,18 @@
           <Property Name="Note" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Invoice" Relationship="Self.fk_profile_sender_id" FromRole="InvoiceLine" ToRole="Invoice" />
           <NavigationProperty Name="Product" Relationship="Self.fk_profil_receiver_id" FromRole="InvoiceLine" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="postId" />
+          </Key>
+          <Property Name="postId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="postContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="viewCount" Type="Int32" />
+          <Property Name="commentCount" Type="Int32" />
+          <Property Name="shareCount" Type="Int32" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -191,7 +233,7 @@
           <Property Name="shopname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="shopImageURL" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Invoice__userID__182C9B23">
+        <Association Name="FK__Invoice__userID__1A14E395">
           <End Role="Information" Type="Self.Information" Multiplicity="1" />
           <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
           <ReferentialConstraint>
@@ -231,9 +273,10 @@
           <EntitySet Name="Information" EntityType="Self.Information" />
           <EntitySet Name="Invoices" EntityType="Self.Invoice" />
           <EntitySet Name="InvoiceLines" EntityType="Self.InvoiceLine" />
+          <EntitySet Name="News" EntityType="Self.News" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Shops" EntityType="Self.Shop" />
-          <AssociationSet Name="FK__Invoice__userID__182C9B23" Association="Self.FK__Invoice__userID__182C9B23">
+          <AssociationSet Name="FK__Invoice__userID__1A14E395" Association="Self.FK__Invoice__userID__1A14E395">
             <End Role="Information" EntitySet="Information" />
             <End Role="Invoice" EntitySet="Invoices" />
           </AssociationSet>
@@ -245,7 +288,108 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="InvoiceLine" EntitySet="InvoiceLines" />
           </AssociationSet>
+          <FunctionImport Name="GetLapTopPaging" ReturnType="Collection(Model.GetLapTopPaging_Result)">
+            <Parameter Name="u" Mode="In" Type="Int32" />
+            <Parameter Name="v" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetPhonePaging" ReturnType="Collection(Model.GetPhonePaging_Result)">
+            <Parameter Name="u" Mode="In" Type="Int32" />
+            <Parameter Name="v" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetProductPaging" ReturnType="Collection(Model.GetProductPaging_Result)">
+            <Parameter Name="u" Mode="In" Type="Int32" />
+            <Parameter Name="v" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="searchByName" ReturnType="Collection(Model.searchByName_Result)">
+            <Parameter Name="u" Mode="In" Type="Int32" />
+            <Parameter Name="v" Mode="In" Type="Int32" />
+            <Parameter Name="w" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="GetLapTopPaging_Result">
+          <Property Type="Int32" Name="productID" Nullable="false" />
+          <Property Type="Int32" Name="shopID" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="image" Nullable="false" MaxLength="200" />
+          <Property Type="Double" Name="price" Nullable="false" />
+          <Property Type="String" Name="productType" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="description" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="OS" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="screen" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="camera" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CPU" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="RAM" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="PIN" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="SIM" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="innerMemory" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="manufacture" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="guarantee" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="status" Nullable="true" />
+          <Property Type="Int64" Name="row" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetPhonePaging_Result">
+          <Property Type="Int32" Name="productID" Nullable="false" />
+          <Property Type="Int32" Name="shopID" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="image" Nullable="false" MaxLength="200" />
+          <Property Type="Double" Name="price" Nullable="false" />
+          <Property Type="String" Name="productType" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="description" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="OS" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="screen" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="camera" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CPU" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="RAM" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="PIN" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="SIM" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="innerMemory" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="manufacture" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="guarantee" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="status" Nullable="true" />
+          <Property Type="Int64" Name="row" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetProductPaging_Result">
+          <Property Type="Int32" Name="productID" Nullable="false" />
+          <Property Type="Int32" Name="shopID" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="image" Nullable="false" MaxLength="200" />
+          <Property Type="Double" Name="price" Nullable="false" />
+          <Property Type="String" Name="productType" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="description" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="OS" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="screen" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="camera" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CPU" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="RAM" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="PIN" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="SIM" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="innerMemory" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="manufacture" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="guarantee" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="status" Nullable="true" />
+          <Property Type="Int64" Name="row" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="searchByName_Result">
+          <Property Type="Int32" Name="productID" Nullable="false" />
+          <Property Type="Int32" Name="shopID" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="image" Nullable="false" MaxLength="200" />
+          <Property Type="Double" Name="price" Nullable="false" />
+          <Property Type="String" Name="productType" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="description" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="OS" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="screen" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="camera" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CPU" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="RAM" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="PIN" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="SIM" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="innerMemory" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="manufacture" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="guarantee" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="status" Nullable="true" />
+          <Property Type="Int64" Name="row" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -283,6 +427,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="Model.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="postId" ColumnName="postId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="postContent" ColumnName="postContent" />
+                <ScalarProperty Name="viewCount" ColumnName="viewCount" />
+                <ScalarProperty Name="commentCount" ColumnName="commentCount" />
+                <ScalarProperty Name="shareCount" ColumnName="shareCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="Model.Product">
               <MappingFragment StoreEntitySet="Product">
@@ -316,6 +473,106 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetLapTopPaging" FunctionName="Model.Store.GetLapTopPaging">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.GetLapTopPaging_Result">
+                <ScalarProperty Name="productID" ColumnName="productID" />
+                <ScalarProperty Name="shopID" ColumnName="shopID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="productType" ColumnName="productType" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="screen" ColumnName="screen" />
+                <ScalarProperty Name="camera" ColumnName="camera" />
+                <ScalarProperty Name="CPU" ColumnName="CPU" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="PIN" ColumnName="PIN" />
+                <ScalarProperty Name="SIM" ColumnName="SIM" />
+                <ScalarProperty Name="innerMemory" ColumnName="innerMemory" />
+                <ScalarProperty Name="manufacture" ColumnName="manufacture" />
+                <ScalarProperty Name="guarantee" ColumnName="guarantee" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="row" ColumnName="row" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPhonePaging" FunctionName="Model.Store.GetPhonePaging">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.GetPhonePaging_Result">
+                <ScalarProperty Name="productID" ColumnName="productID" />
+                <ScalarProperty Name="shopID" ColumnName="shopID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="productType" ColumnName="productType" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="screen" ColumnName="screen" />
+                <ScalarProperty Name="camera" ColumnName="camera" />
+                <ScalarProperty Name="CPU" ColumnName="CPU" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="PIN" ColumnName="PIN" />
+                <ScalarProperty Name="SIM" ColumnName="SIM" />
+                <ScalarProperty Name="innerMemory" ColumnName="innerMemory" />
+                <ScalarProperty Name="manufacture" ColumnName="manufacture" />
+                <ScalarProperty Name="guarantee" ColumnName="guarantee" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="row" ColumnName="row" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProductPaging" FunctionName="Model.Store.GetProductPaging">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.GetProductPaging_Result">
+                <ScalarProperty Name="productID" ColumnName="productID" />
+                <ScalarProperty Name="shopID" ColumnName="shopID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="productType" ColumnName="productType" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="screen" ColumnName="screen" />
+                <ScalarProperty Name="camera" ColumnName="camera" />
+                <ScalarProperty Name="CPU" ColumnName="CPU" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="PIN" ColumnName="PIN" />
+                <ScalarProperty Name="SIM" ColumnName="SIM" />
+                <ScalarProperty Name="innerMemory" ColumnName="innerMemory" />
+                <ScalarProperty Name="manufacture" ColumnName="manufacture" />
+                <ScalarProperty Name="guarantee" ColumnName="guarantee" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="row" ColumnName="row" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="searchByName" FunctionName="Model.Store.searchByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.searchByName_Result">
+                <ScalarProperty Name="productID" ColumnName="productID" />
+                <ScalarProperty Name="shopID" ColumnName="shopID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="productType" ColumnName="productType" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="screen" ColumnName="screen" />
+                <ScalarProperty Name="camera" ColumnName="camera" />
+                <ScalarProperty Name="CPU" ColumnName="CPU" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="PIN" ColumnName="PIN" />
+                <ScalarProperty Name="SIM" ColumnName="SIM" />
+                <ScalarProperty Name="innerMemory" ColumnName="innerMemory" />
+                <ScalarProperty Name="manufacture" ColumnName="manufacture" />
+                <ScalarProperty Name="guarantee" ColumnName="guarantee" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="row" ColumnName="row" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

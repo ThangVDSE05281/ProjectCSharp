@@ -4,13 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e2ef99e184004b28a74e313b56845ee2" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Information" Width="1.5" PointX="0.625" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Invoice" Width="1.5" PointX="0.625" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.InvoiceLine" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="5.125" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Shop" Width="1.5" PointX="2.625" PointY="3.125" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK__Invoice__userID__182C9B23" ManuallyRouted="false" />
+      <Diagram DiagramId="67ba919898344ee3b29ce3631e81e512" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Information" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Invoice" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.InvoiceLine" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.News" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Shop" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__Invoice__userID__1A14E395" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_profile_sender_id" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_profil_receiver_id" ManuallyRouted="false" />
       </Diagram>

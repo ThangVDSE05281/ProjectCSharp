@@ -33,7 +33,7 @@ namespace Test.Controllers
                     cartItems.Add(new CartItem(id, quantity));
                     Session["CartItems"] = cartItems;
                     Session["CartItemsSize"] = cartItems.Count;
-                    return Json(cartItems);
+                    return Json(cartItems, JsonRequestBehavior.AllowGet);
                 }
                 else
                 {

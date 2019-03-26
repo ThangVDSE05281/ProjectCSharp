@@ -1,6 +1,59 @@
 ﻿*{
 }
 
+.searchTitle {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+form.navbar-form.navbar-left {
+    width: 169%;
+}
+
+div.loadMore,.searchButton {
+    border: 1px solid #eee;
+    padding: 6px 30px;
+    border-radius: 3px;
+    color: #51B7ED;
+    transition: .5s;
+    cursor: pointer;
+}
+
+div.loadMore:hover {
+    background: #288AD6;
+    color: white;
+    transition:.5s;
+}
+.searchButton:hover{
+    background: #288AD6;
+    color: white;
+    transition:.5s;
+}
+
+
+
+.row.d-flex.justify-content-center {
+    display: flex;
+    justify-content: center;
+    margin-top:20px;
+}
+
+.listProductCategory {overflow: hidden;}
+
+.allTypePhoneList ul {
+    display: flex;
+    justify-content: center;
+}
+
+.allTypePhoneList ul {
+    padding: 0;
+}
+
+.allTypePhoneList ul li {
+    display: inline-block;
+    border: 1px solid #eee;
+}
+
 span#cartItemsSize {
     color: white;
     width: 30px;
@@ -76,6 +129,10 @@ i.fas.fa-th {
     padding: 0 20px;
     font-weight: bold;
     width: 100%;
+}
+
+.listProductHeader a {
+    color: white;
 }
 
 .listProduct {
