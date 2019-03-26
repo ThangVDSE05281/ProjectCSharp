@@ -90,7 +90,5 @@ namespace Test.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<searchByName_Result>("searchByName", uParameter, vParameter, wParameter);
         }
 
-        public virtual DbSet<News> News { get; set; }
-
     }
 }
