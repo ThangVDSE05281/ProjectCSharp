@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="67ba919898344ee3b29ce3631e81e512" Name="Diagram1">
+      <Diagram DiagramId="3f1847477ec44d67859bc43f33a6eaef" Name="Diagram1">
         <EntityTypeShape EntityType="Model.Information" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Invoice" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.InvoiceLine" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
@@ -14,7 +14,6 @@
         <AssociationConnector Association="Model.FK__Invoice__userID__1A14E395" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_profile_sender_id" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_profil_receiver_id" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Model.News" Width="1.5" PointX="7.625" PointY="0.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
