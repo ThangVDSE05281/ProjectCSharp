@@ -21,13 +21,29 @@ namespace Test
             routes.MapRoute(
                 name: "AddCart",
                 url: "{controller}/{action}/{id}/{quantity}",
-                defaults: new { controller = "Home", action = "AddCart", id = UrlParameter.Optional,quantity= UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "AddCart", id = UrlParameter.Optional, quantity = UrlParameter.Optional }
             );
             routes.MapRoute(
-                name: "ProductDetails", 
+                name: "ProductDetails",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "ViewProduct", id=UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "ViewProduct", id = UrlParameter.Optional }
            );
+            routes.MapRoute(
+               name: "ViewCart",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Cart", action = "ViewCart"}
+          );
+            routes.MapRoute(
+               name: "RemoveProduct",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Cart", action = "RemoveProduct",id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+               name: "UpdateProductSession",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Cart", action = "UpdateProductSession", id = UrlParameter.Optional,quantity=UrlParameter.Optional }
+          );
         }
+        
     }
 }

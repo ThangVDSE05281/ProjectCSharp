@@ -22,5 +22,14 @@ namespace Test.Models
     
         public virtual Invoice Invoice { get; set; }
         public virtual Product Product { get; set; }
+
+        public InvoiceLine(int invoiceID,int productID, int quantity, int unitPrice, string note)
+        {
+            this.invoiceID = invoiceID;
+            this.productID = productID;
+            this.quantity = quantity;
+            this.unitPrice = unitPrice;
+            this.Note = note;
+        }
     }
 }

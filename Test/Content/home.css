@@ -211,3 +211,98 @@ img.logo {
     max-width: 100%;
     height: auto;
 }
+
+.foodPay{
+    margin-top: 2.5rem;
+    border: 1px solid #D7D7D7;
+    padding: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 20px 5px #0000002b;
+    border-radius: 6px;
+}
+
+.oneFood{position:  relative;height: 60px;overflow:  hidden;}
+.oneFood .foodImg{width: 60px;display:  inline-block;border-radius: 4px;overflow:  hidden;}
+.oneFood .foodImg img{width: 100%;}
+.oneFood .foodName{display:  inline-block;font-weight:  bold;position:  absolute;margin-left: 10px;top: 50%;transform: translateY(-50%);width: 60%;}
+.oneFood .foodPrice{bottom: 0;display: inline-block;position: absolute;color:  #206B9B;font-weight: 700;right: 0;}
+.oneFood .addFood{display: inline-block;position:  absolute;right: 0;top: 0; cursor: pointer;}
+.oneFood .addFood  i{color: #CF2127;font-size: 25px;}
+.oneFood .minusFood{display: inline-block;position:  absolute;right: 45px;top: 0; cursor: pointer;}
+.oneFood .minusFood  i{color: #CF2127;font-size: 25px;}
+.oneFood .quantity{
+    position:  absolute;
+    right: 29px;
+    top: 0px;
+    font-weight:  bold;
+}
+
+
+.removeFood{
+    cursor: pointer;
+}
+
+.payment{
+    margin-top: 2.5rem;
+    border: 1px solid #D7D7D7;
+    padding: 20px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 20px 5px #0000002b;
+    border-radius: 6px;
+}
+.payment .card-text{
+    font-weight: 500;
+    display:  inline-block;
+}
+.payment .totalPrice{
+    display:  inline-block;
+    float:  right;
+    font-weight: 600;
+}
+.payment label{
+    margin: 0;
+    padding: 5px 0;
+}
+.payment button{
+    margin-top: 30px;
+    width: 100%;
+}
+.payment .inputAddress,.payment .inputPhone{
+    float:  right;
+    border: 1px solid #eee;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.note{
+    display:  inline-block;
+    margin-left: 30px;
+    float:  right;
+}
+.note input{border: 1px solid #eee;padding: 5px 10px;border-radius: 5px;}
+.cartContent{
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.img-logo {
+    width: 65%;
+    margin-top: 3px;
+    margin-left: 55px;
+}
+
+.food-list {
+    margin-left: 30px
+}
+
+.orderlist {
+    margin-top: 40px
+}
+
+.slsp{position: absolute;
+      right: 0;
+      width: 69px;
+      border: 1px solid black;
+      padding: 5px 10px;
+      border-radius: 10px;
+      outline: none;
+}

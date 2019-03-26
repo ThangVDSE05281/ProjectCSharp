@@ -198,6 +198,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -322,6 +323,8 @@
     <Content Include="Views\Home\AddCart.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Home\ViewProduct.cshtml" />
+    <Content Include="Views\Shared\Cart.cshtml" />
+    <Content Include="Views\Cart\ViewCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
