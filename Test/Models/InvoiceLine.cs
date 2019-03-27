@@ -9,18 +9,46 @@
 
 namespace Test.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class InvoiceLine
-    {
+    {   [JsonProperty("invoiceID")]
         public int invoiceID { get; set; }
+        [JsonProperty("productID")]
         public int productID { get; set; }
+        [JsonProperty("quantity")]
         public int quantity { get; set; }
+        [JsonProperty("unitPrice")]
         public double unitPrice { get; set; }
+        [JsonProperty("Note")]
         public string Note { get; set; }
-    
+        [JsonProperty("Invoice")]
         public virtual Invoice Invoice { get; set; }
+        [JsonProperty("Product")]
         public virtual Product Product { get; set; }
+        
+        public InvoiceLine(int invoiceID,int productID, int quantity, int unitPrice, string note)
+        {
+            this.invoiceID = invoiceID;
+            this.productID = productID;
+            this.quantity = quantity;
+            this.unitPrice = unitPrice;
+            this.Note = note;
+        }
+
+        public InvoiceLine (int productID, int quantity, int unitPrice, string note)
+        {
+
+            this.productID = productID;
+            this.quantity = quantity;
+            this.unitPrice = unitPrice;
+            this.Note = note;
+        }
+
+        public InvoiceLine()
+        {
+        }
     }
 }

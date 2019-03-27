@@ -29,11 +29,11 @@ namespace Test.Models
     
         public virtual DbSet<Information> Information { get; set; }
         public virtual DbSet<Invoice> Invoices { get; set; }
-        public virtual DbSet<InvoiceLine> InvoiceLines { get; set; }
-        public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<InvoiceLine> InvoiceLine { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Shop> Shops { get; set; }
-    
+        public object Informations { get; internal set; }
+        
         public virtual ObjectResult<GetLapTopPaging_Result> GetLapTopPaging(Nullable<int> u, Nullable<int> v)
         {
             var uParameter = u.HasValue ?
@@ -89,6 +89,5 @@ namespace Test.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<searchByName_Result>("searchByName", uParameter, vParameter, wParameter);
         }
-
     }
 }
