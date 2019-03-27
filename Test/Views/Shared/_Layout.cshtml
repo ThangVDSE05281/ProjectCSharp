@@ -30,6 +30,13 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>
+                        @using (Html.BeginForm("Index", "Search", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
+                        {
+                            @Html.TextBox("searchString", null, new { @class = "form-control", placeholder = "Enter product's name ..." })
+                            <input type="submit" id="searchBox" value="Search" class="btn btn-success" />
+                        }
+                    </li>
                 </ul>
                 <div class="cart">
                     @if (Session["CartItemsSize"] != null)

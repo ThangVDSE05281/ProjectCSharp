@@ -50,7 +50,7 @@
                                 @product.description
                             </p>
                             <div>
-                                <a href="#" class="buy-ins">
+                                <a href="@Url.Action("Cart","Home")" onclick="addToCart(@product.productID)" style="cursor:pointer" class="buy-ins">
                                     <b>Buy now with price @product.price $</b>
                                     <br>
                                     <span>Xem hàng, không thích không mua</span>
@@ -59,7 +59,7 @@
                             <br />
                             <div>
                                 <div class="text-center container-card-button">
-                                    <a href="" class="btn btn-default">Add to card</a>
+                                    <a onclick="addToCart(@product.productID)" style="cursor:pointer" class="btn btn-default">Add to card</a>
                                     <i class="fa fa-shopping-cart icon-card"></i>
                                 </div>
                             </div>

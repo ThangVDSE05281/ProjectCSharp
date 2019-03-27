@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="allTypePhoneList mt-3">
+    <ul>
+        <li><a><img src="~/Images/BlackBerry42-b_38.png" /></a></li>
+        <li><a><img src="~/Images/iPhone-(Apple)42-b_16.jpg" /></a></li>
+        <li><a><img src="~/Images/Samsung42-b_25.jpg" /></a></li>
+        <li><a><img src="~/Images/Xiaomi42-b_31.png" /></a></li>
+        <li><a><img src="~/Images/Vsmart42-b_40.png" /></a></li>
+    </ul>
+</div>
+<div class="listProductCategory" id="listProductCategory">
+    @if (ViewBag.phonesList != null)
+    {
+        foreach (var x in ViewBag.phonesList)
+        {
+            <div class="oneProduct oneProductInPhone card col-sm-3">
+                <img class="card-img-top" src="../../../Images/@x.image " alt="Card image cap" />
+                <div class="card-body">
+                    <p class="productTitle">@x.name</p>
+                    <p class="productPrice">$@x.price</p>
+                    <div class="productControl">
+                        <div class="addProductCart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <a onclick="addToCart(@x.productID)" style="cursor:pointer"> Add to cart</a>
+                        </div>
+                        <hr style="margin:2px 0">
+                        <div class="productDetailLink">
+                            <i class="fas fa-info-circle"></i>
+                            <a href="/Home/ViewProduct/@x.productID"> More details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<div class="row d-flex justify-content-center mt-3">
+    <div id="loadMorePhone" class="loadMore" url="/PhonePage/Paging?page=" page="2">XEM THÊM SẢN PHẨM</div>
+</div>
+
