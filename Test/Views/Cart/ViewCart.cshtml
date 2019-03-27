@@ -50,8 +50,9 @@
                                 }
                             }
 
-                            <div class="foodPrice mt-5" id="price@(x.productID)">@x.price</div>
+                            <div class="foodPrice mt-5" id="price@(x.productID)">$@x.price</div>
                         </div>
+                        <br />
                         <form class="formRemoveProduct" method="POST">
                             <button type="submit" class="btn btn-danger mt-3 removeItem" data-id="@(x.productID)"><i class="fas fa-trash-alt"></i> Remove</button>
                         </form>
@@ -68,24 +69,28 @@
                     <h4 class="card-title">Thông tin đơn hàng</h4>
                     <p class="card-text">Tạm tính</p>
                     <div class="totalPrice">
-                        @sum Đ
+                        $@sum
                     </div>
                     <div class="row">
                         <label class="col-4">Họ và tên:</label>
                         <input required maxlength="20" class="inputAddress col-8" type="text" placeholder="Tên" id="name" />
                     </div>
+                    <br />
                     <div class="row">
                         <label class="col-4">Nhập Email:</label>
                         <input required maxlength="20" class="inputAddress col-8" type="text" placeholder="Email" id="email" />
                     </div>
+                    <br />
                     <div class="row">
                         <label class="col-4">Nhập địa chỉ:</label>
                         <input required maxlength="20" class="inputAddress col-8" type="text" placeholder="Địa chỉ" id="address" />
                     </div>
+                    <br />
                     <div class="row">
                         <label class="col-4">Số điện thoại:</label>
                         <input required maxlength="20" class="inputPhone col-8" type="text" placeholder="SĐT" id="phone" />
                     </div>
+                    <br />
                     <input class="btn btn-warning datHang" data-id="1" value="Đặt Hàng" type="submit" />
                 </div>
             </div>

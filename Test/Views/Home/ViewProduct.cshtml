@@ -7,8 +7,16 @@
 <div class="container" id="view-product-body">
     <div class="view-header">
         <nav class="breadcrumb">
-            @Html.ActionLink("Home","Index","Home",new {@class = "breadcrumb-item" })
-            <a class="breadcrumb-item" href="#">@product.productType</a>
+            @Html.ActionLink("Home", "Index", "Home", new { @class = "breadcrumb-item" })
+            @{if (product.productType.Equals("SmartPhone"))
+                {
+                    <a class="breadcrumb-item" href="/PhonePage">@product.productType</a>
+                }
+                else
+                {
+                    <a class="breadcrumb-item" href="/LapTopPage">@product.productType</a>
+                }
+            }
             <span class="breadcrumb-item active">@product.name</span>
         </nav>
         <ul class="list-inline">
