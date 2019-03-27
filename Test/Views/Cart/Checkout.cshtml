@@ -8,7 +8,7 @@
     List<Product> products = new List<Product>();
     products = (from info in db.Information
                 join invoice in db.Invoices on info.userID equals invoice.userID
-                join line in db.InvoiceLine on invoice.invoiceID equals line.invoiceID
+                join line in db.InvoiceLines on invoice.invoiceID equals line.invoiceID
                 join product in db.Products on line.productID equals product.productID
                 where info.userID == k
                 select product).ToList();
@@ -16,7 +16,7 @@
     List<InvoiceLine> invoiceLines = new List<InvoiceLine>();
     invoiceLines = (from info in db.Information
                     join invoice in db.Invoices on info.userID equals invoice.userID
-                    join line in db.InvoiceLine on invoice.invoiceID equals line.invoiceID
+                    join line in db.InvoiceLines on invoice.invoiceID equals line.invoiceID
                     join product in db.Products on line.productID equals product.productID
                     where info.userID == k
                     select line).ToList();
@@ -33,7 +33,7 @@
     }
 }
 
-<div class="row" style="margin-top:200px">
+<div class="row">
     <div class="col-4 hovereffect3 text-center">
         <!--Image-->
         

@@ -149,9 +149,9 @@ namespace Test.Controllers
                 line.invoiceID = currentInvoice;
                 line.quantity = (int)cartItems[i].quantity;
                 line.unitPrice = (int)product.price;
-                db.InvoiceLine.Add(line);
+                db.InvoiceLines.Add(line);
                 db.SaveChanges();
-                int m = db.InvoiceLine.Max(x => x.invoiceID);
+                int m = db.InvoiceLines.Max(x => x.invoiceID);
                 //System.Diagnostics.Debug.WriteLine(m);
             }
 

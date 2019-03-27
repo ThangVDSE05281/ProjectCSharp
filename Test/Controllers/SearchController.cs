@@ -13,6 +13,8 @@ namespace Test.Controllers
         Entities db = new Entities();
         public ActionResult Index(string searchString)
         {
+            List<News> news = (from tblNews in db.News select tblNews).Take(4).ToList();
+            ViewBag.news = news;
             if (searchString==null)
             {
                 return View();
@@ -26,26 +28,9 @@ namespace Test.Controllers
                 var phonesList = db.searchByName(from, to, searchString);
                 System.Diagnostics.Debug.WriteLine("first:" + phonesList);
                 ViewBag.phonesList = phonesList.ToList();
-                //ViewBag.size = phonesList.ToList().Count;
                 ViewBag.searchString = searchString;
                 return View();
             }
-            
-
-
-
-            //var phonesList = (from p in db.Products where p.productType.Equals("SmartPhone") select p);
-            //var lapTopsList = (from p in db.Products where p.productType.Equals("Laptop") select p);
-            //List<News> news = (from tblNews in db.News select tblNews).Take(4).ToList();
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    phonesList = phonesList.Where(p => p.name.Contains(searchString));
-            //    lapTopsList = lapTopsList.Where(p => p.name.Contains(searchString));
-            //}
-            //ViewBag.phonesList = phonesList.ToList();
-            //ViewBag.lapTopsList = lapTopsList;
-            //ViewBag.news = news;
-            //return View();
         }
 
         

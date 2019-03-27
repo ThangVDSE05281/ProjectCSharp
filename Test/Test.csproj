@@ -258,6 +258,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Product.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Product1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Product.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\searchByName_Result.cs">
       <DependentUpon>Product.tt</DependentUpon>
     </Compile>
